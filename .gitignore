@@ -1,0 +1,16 @@
+# Generated markdown files from PDF conversion
+docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv
+
+# OS
+.DS_Store
+Thumbs.db
