@@ -1,0 +1,37 @@
+name: Convert PDFs to Markdown
+
+on:
+  push:
+    paths:
+      - '**.pdf'
+  workflow_dispatch:
+
+jobs:
+  convert-pdfs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install pdfplumber PyPDF2 python-dotenv
+      
+      - name: Convert PDFs to Markdown
+        run: python scripts/convert_pdfs.py
+      
+      - name: Commit converted files
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/*.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-convert PDFs to Markdown [skip ci]"
+          git push
