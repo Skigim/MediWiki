@@ -6,7 +6,7 @@ Single-file web application for Medicaid and Long-Term Care (MLTC) policy docume
 
 **Tech Stack:** Vite, Marked.js, Fuse.js, marked-gfm-heading-id  
 **Build Output:** Single 530KB HTML file  
-**Status:** 18 documents converted
+**Status:** 19 documents converted
 
 ## Project Structure
 
@@ -16,8 +16,8 @@ MediWiki/
 │   ├── README.md      # Home page content
 │   └── *.md          # Individual guides
 ├── pdfs/
-│   ├── archived/      # Converted PDFs
-│   └── pending/       # Unconverted PDFs
+│   ├── archived/              # Converted PDFs
+│   └── pending-conversion/    # Unconverted PDFs
 ├── src/
 │   ├── main.js       # App logic & imports
 │   └── style.css     # Styling
@@ -41,11 +41,17 @@ MediWiki/
 
 ## Adding New Documents
 
-1. **Convert PDF to Markdown** (follow `FORMATTING_GUIDELINES.md`)
-2. **Save** as `docs/[Document Name].md`
-3. **Move** PDF from `pdfs/pending/` to `pdfs/archived/`
-4. **Update `docs/README.md`** - Add link with URL-encoded filename
-5. **Update `src/main.js`:**
+1. **Extract PDF text** (pdfplumber is installed):
+   ```python
+   import pdfplumber
+   with pdfplumber.open('pdfs/pending-conversion/filename.pdf') as pdf:
+       text = '\n\n'.join(page.extract_text() for page in pdf.pages)
+   ```
+2. **Convert to Markdown** (follow `FORMATTING_GUIDELINES.md`)
+3. **Save** as `docs/[Document Name].md`
+4. **Move** PDF from `pdfs/pending-conversion/` to `pdfs/archived/`
+5. **Update `docs/README.md`** - Add link with URL-encoded filename
+6. **Update `src/main.js`:**
    ```javascript
    // Add import
    import newDoc from '../docs/New Document.md?raw';
@@ -57,9 +63,9 @@ MediWiki/
    'New Document.md': 'new-doc-id',
    'New%20Document.md': 'new-doc-id',
    ```
-6. **Update `index.html`** - Add nav link in appropriate section
-7. **Build:** `npm run build`
-8. **Test:** Open `dist/index.html`, verify navigation, search, and links
+7. **Update `index.html`** - Add nav link in appropriate section
+8. **Build:** `npm run build`
+9. **Test:** Open `dist/index.html`, verify navigation, search, and links
 
 ## Document Formatting
 
@@ -80,11 +86,11 @@ See `FORMATTING_GUIDELINES.md` for complete specification.
 - Preserve all original information
 - Professional tone
 
-## Completed Documents (18)
+## Completed Documents (19)
 
-AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide
+AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • Self-Employment Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide
 
-Check `pdfs/pending/` for unconverted documents.
+Check `pdfs/pending-conversion/` for unconverted documents.
 
 ## Domain Knowledge
 

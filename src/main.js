@@ -20,6 +20,7 @@ import ltcQA from '../docs/Long-Term Care (LTC) Q&A.md?raw';
 import ltcInsurance from '../docs/LTC Insurance Payment Recovery Process.md?raw';
 import medicarePartD from '../docs/Medicare Part D Co-pay Deductions.md?raw';
 import sdxGuide from '../docs/SDX Guide.md?raw';
+import selfEmployment from '../docs/Self-Employment Guide.md?raw';
 import simpBudgeting from '../docs/SIMP Budgeting Q & A.md?raw';
 import trustAnnuity from '../docs/Trust and Annuity Process Guide.md?raw';
 import waiverProcess from '../docs/Waiver Process Guide.md?raw';
@@ -41,6 +42,7 @@ const documentsData = {
   'ltc-insurance': { title: 'LTC Insurance Payment Recovery', content: ltcInsurance },
   'medicare-part-d': { title: 'Medicare Part D Co-pay Deductions', content: medicarePartD },
   'sdx-guide': { title: 'SDX Guide', content: sdxGuide },
+  'self-employment': { title: 'Self-Employment Guide', content: selfEmployment },
   'simp-budgeting': { title: 'SIMP Budgeting Q&A', content: simpBudgeting },
   'trust-annuity': { title: 'Trust and Annuity Process Guide', content: trustAnnuity },
   'waiver-process': { title: 'Waiver Process Guide', content: waiverProcess }
@@ -57,6 +59,7 @@ marked.setOptions({
 const contentContainer = document.getElementById('contentContainer');
 const navLinks = document.querySelectorAll('.nav-link');
 const searchInput = document.getElementById('searchInput');
+const backToTopBtn = document.getElementById('backToTop');
 
 // Create search index for Fuse.js
 const searchIndex = Object.keys(documentsData).map(docId => ({
@@ -158,6 +161,8 @@ const filenameToDocId = {
   'Medicare%20Part%20D%20Co-pay%20Deductions.md': 'medicare-part-d',
   'SDX Guide.md': 'sdx-guide',
   'SDX%20Guide.md': 'sdx-guide',
+  'Self-Employment Guide.md': 'self-employment',
+  'Self-Employment%20Guide.md': 'self-employment',
   'SIMP Budgeting Q & A.md': 'simp-budgeting',
   'SIMP%20Budgeting%20Q%20&%20A.md': 'simp-budgeting',
   'Trust and Annuity Process Guide.md': 'trust-annuity',
@@ -181,6 +186,8 @@ function processInternalLinks() {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
+          // Show back to top button when user clicks an anchor link
+          showBackToTop();
         }
       });
     }
@@ -382,3 +389,31 @@ if (link) {
   const docId = link.getAttribute('data-doc');
   loadMarkdown(docId);
 }
+
+// Back to Top button functionality
+function showBackToTop() {
+  backToTopBtn.classList.add('visible');
+}
+
+function hideBackToTop() {
+  backToTopBtn.classList.remove('visible');
+}
+
+// Handle back to top button click
+backToTopBtn.addEventListener('click', () => {
+  // Find the table of contents heading (usually h2 with "table-of-contents" id)
+  const toc = document.getElementById('table-of-contents');
+  if (toc) {
+    toc.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // Fallback: scroll to top of content
+    contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  hideBackToTop();
+});
+
+// Hide button when navigating to a new document
+const originalLoadMarkdown = loadMarkdown;
+window.addEventListener('hashchange', () => {
+  hideBackToTop();
+});

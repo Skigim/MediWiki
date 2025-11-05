@@ -25,6 +25,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 - [Deprivation of Resources Process Guide](Deprivation%20of%20Resources%20Process%20Guide.md) – Procedures for handling resource deprivation cases
 - [Deprivation of Resources Q&A](Deprivation%20of%20Resources%20Q&A.md) – Common questions and answers about resource deprivation
 - [Charitable Giving Guidance](Charitable%20Giving%20Guidance.md) – Policy on charitable giving and resource treatment
+- [Self-Employment Guide](Self-Employment%20Guide.md) – MAGI and Non-MAGI self-employment income determination procedures
 
 ### Beneficiary Programs
 
@@ -71,7 +72,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 14 (10 documents pending professional reformatting)
+- **Total Documents:** 19
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 
