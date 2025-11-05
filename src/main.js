@@ -1,7 +1,10 @@
 import { marked } from 'marked';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
+import Fuse from 'fuse.js';
 import './style.css';
 
 // Import all markdown files as raw text
+import readme from '../docs/README.md?raw';
 import adWaiverTransition from '../docs/AD Waiver Transition Guide.md?raw';
 import additionalExcessIncome from '../docs/Additional Excess Income Guide.md?raw';
 import adultAdInitial from '../docs/Adult AD Waiver Initial Determination Process.md?raw';
@@ -44,16 +47,36 @@ const documentsData = {
 };
 
 // Initialize marked.js options
+marked.use(gfmHeadingId());
 marked.setOptions({
   breaks: true,
-  gfm: true,
-  headerIds: true
+  gfm: true
 });
 
 // Get elements
 const contentContainer = document.getElementById('contentContainer');
 const navLinks = document.querySelectorAll('.nav-link');
 const searchInput = document.getElementById('searchInput');
+
+// Create search index for Fuse.js
+const searchIndex = Object.keys(documentsData).map(docId => ({
+  id: docId,
+  title: documentsData[docId].title,
+  content: documentsData[docId].content
+}));
+
+// Initialize Fuse.js with search options
+const fuse = new Fuse(searchIndex, {
+  keys: [
+    { name: 'title', weight: 2 },
+    { name: 'content', weight: 1 }
+  ],
+  threshold: 0.3,
+  includeScore: true,
+  includeMatches: true,
+  minMatchCharLength: 3,
+  ignoreLocation: true
+});
 
 // Load and display markdown
 function loadMarkdown(docId) {
@@ -91,51 +114,15 @@ function loadMarkdown(docId) {
 
 // Show welcome screen
 function showWelcomeScreen() {
-  contentContainer.innerHTML = `
-    <div class="welcome-screen">
-      <h1>Welcome to MediWiki</h1>
-      <p>Your comprehensive resource for Medicaid and Long-Term Care policy and process documentation.</p>
-      
-      <div class="stats">
-        <div class="stat-item">
-          <div class="stat-number">18</div>
-          <div class="stat-label">Documentation Files</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">6</div>
-          <div class="stat-label">Major Categories</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Professionally Formatted</div>
-        </div>
-      </div>
-
-      <div class="category-grid">
-        <div class="category-card">
-          <h3>🏥 Waiver Programs</h3>
-          <p>Comprehensive guides for AD Waiver initial and renewal processes for both adults and children.</p>
-          <div class="doc-count">6 Documents</div>
-        </div>
-        <div class="category-card">
-          <h3>💰 Income & Resources</h3>
-          <p>Detailed guidance on excess income, deprivation of resources, trusts, annuities, and SIMP budgeting.</p>
-          <div class="doc-count">6 Documents</div>
-        </div>
-        <div class="category-card">
-          <h3>🔄 Benefits & Interfaces</h3>
-          <p>Process guides for BDE, DAC, SDX interfaces and Medicare Part D coordination.</p>
-          <div class="doc-count">4 Documents</div>
-        </div>
-        <div class="category-card">
-          <h3>🏡 Long-Term Care</h3>
-          <p>Q&A resources and insurance payment recovery procedures for LTC services.</p>
-          <div class="doc-count">2 Documents</div>
-        </div>
-      </div>
-    </div>
-  `;
+  // Parse the README markdown
+  const html = marked.parse(readme);
+  
+  // Wrap it in a special welcome container with enhanced styling
+  contentContainer.innerHTML = `<div class="welcome-page markdown-content">${html}</div>`;
   contentContainer.scrollTop = 0;
+  
+  // Process internal links in the README
+  processInternalLinks();
 }
 
 // Map markdown filenames to document IDs
@@ -182,6 +169,7 @@ const filenameToDocId = {
 // Process internal links in markdown
 function processInternalLinks() {
   const links = contentContainer.querySelectorAll('a');
+  
   links.forEach(link => {
     const href = link.getAttribute('href');
     
@@ -205,12 +193,14 @@ function processInternalLinks() {
         try {
           const decoded = decodeURIComponent(href);
           docId = filenameToDocId[decoded];
-        } catch (e) {
+        } catch (err) {
           // If decoding fails, continue
+          console.error('Failed to decode URL:', href, err);
         }
       }
       
       if (docId) {
+        // Add event listener to navigate
         link.addEventListener('click', (e) => {
           e.preventDefault();
           
@@ -223,6 +213,15 @@ function processInternalLinks() {
             loadMarkdown(docId);
           }
         });
+        
+        // Add a visual indicator that this link is interactive
+        link.setAttribute('data-doc-link', docId);
+        link.style.cursor = 'pointer';
+      } else {
+        // Link to unknown document - log it
+        console.warn('No docId mapping found for:', href);
+        link.style.color = '#dc3545'; // Red color for unmapped links
+        link.title = `No mapping found for: ${href}`;
       }
     }
   });
@@ -261,21 +260,117 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-// Search functionality
+// Search functionality with Fuse.js
+let searchResultsContainer = null;
+
 searchInput.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
+  const searchTerm = e.target.value.trim();
   const allNavItems = document.querySelectorAll('.nav-item');
   
-  allNavItems.forEach(item => {
-    const link = item.querySelector('.nav-link');
-    const text = link.textContent.toLowerCase();
-    
-    if (text.includes(searchTerm)) {
+  // Clear previous search results container
+  if (searchResultsContainer) {
+    searchResultsContainer.remove();
+    searchResultsContainer = null;
+  }
+  
+  if (searchTerm.length === 0) {
+    // Show all nav items when search is empty
+    allNavItems.forEach(item => {
       item.style.display = 'block';
-    } else {
+    });
+    return;
+  }
+  
+  if (searchTerm.length < 3) {
+    // For short queries, just filter nav items by title
+    allNavItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      const text = link.textContent.toLowerCase();
+      
+      if (text.includes(searchTerm.toLowerCase())) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    return;
+  }
+  
+  // For longer queries, use Fuse.js for fuzzy search
+  const results = fuse.search(searchTerm);
+  
+  if (results.length > 0) {
+    // Create search results container
+    searchResultsContainer = document.createElement('div');
+    searchResultsContainer.className = 'search-results';
+    searchResultsContainer.innerHTML = `
+      <div class="search-results-header">
+        <strong>Search Results</strong> (${results.length} found)
+      </div>
+    `;
+    
+    // Add results
+    results.slice(0, 10).forEach(result => {
+      const docId = result.item.id;
+      const title = result.item.title;
+      const score = Math.round((1 - result.score) * 100);
+      
+      // Find matching content snippet
+      let snippet = '';
+      if (result.matches) {
+        const contentMatch = result.matches.find(m => m.key === 'content');
+        if (contentMatch && contentMatch.value) {
+          const matchIndex = contentMatch.indices[0][0];
+          const start = Math.max(0, matchIndex - 60);
+          const end = Math.min(contentMatch.value.length, matchIndex + 60);
+          snippet = '...' + contentMatch.value.substring(start, end) + '...';
+        }
+      }
+      
+      const resultItem = document.createElement('div');
+      resultItem.className = 'search-result-item';
+      resultItem.innerHTML = `
+        <div class="search-result-title">${title}</div>
+        ${snippet ? `<div class="search-result-snippet">${snippet}</div>` : ''}
+        <div class="search-result-score">Relevance: ${score}%</div>
+      `;
+      
+      resultItem.addEventListener('click', () => {
+        // Navigate to the document
+        const navLink = document.querySelector(`.nav-link[data-doc="${docId}"]`);
+        if (navLink) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          navLink.classList.add('active');
+          window.location.hash = navLink.getAttribute('href');
+          loadMarkdown(docId);
+          
+          // Clear search
+          searchInput.value = '';
+          searchResultsContainer.remove();
+          searchResultsContainer = null;
+          allNavItems.forEach(item => {
+            item.style.display = 'block';
+          });
+        }
+      });
+      
+      searchResultsContainer.appendChild(resultItem);
+    });
+    
+    // Insert after search box
+    const searchBox = document.querySelector('.search-box');
+    searchBox.parentElement.insertBefore(searchResultsContainer, searchBox.nextSibling);
+    
+    // Hide all nav items to show only search results
+    allNavItems.forEach(item => {
       item.style.display = 'none';
-    }
-  });
+    });
+  } else {
+    // No results found
+    allNavItems.forEach(item => {
+      item.style.display = 'none';
+    });
+  }
 });
 
 // Initialize - check for hash on load
