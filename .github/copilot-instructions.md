@@ -44,7 +44,7 @@ When assisting with this project, GitHub Copilot should:
 5. **Main Content Sections** (4-7 H2 sections with H3 subsections)
 6. **Key Takeaways** section with 6-10 checkmark (✓) items
 7. **Forms and References** section
-8. **Footer** with back-to-index link: `*[← Back to Index](README.md)*`
+8. **Footer** with back-to-index link
 
 #### Lists and Numbers
 - Use **numbered lists** for sequential procedures
@@ -112,7 +112,7 @@ For every document edit or creation, verify:
 ✅ Adult AD Waiver Initial Determination Process.md  
 ✅ Adult AD Waiver Renewal Determination Process.md  
 ✅ Childrens AD Waiver Initial Determination Process.md  
-✅ README.md (Index - do not modify without consultation)
+✅ docs/README.md (Index - do not modify without consultation)
 
 ## Remaining Files (Priority Order)
 
