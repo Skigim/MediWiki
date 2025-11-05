@@ -15,7 +15,6 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 ### Adult Waivers & Determinations
 
 - [AD Waiver Transition Guide](AD%20Waiver%20Transition%20Guide.md) – Worker process for transitioning Adult In-Home waiver cases to Universal Caseload
-- [Adult AD Waiver Initial Determination Process](Adult%20AD%20Waiver%20Initial%20Determination%20Process.md) – Initial determination procedures for Adult Aged & Disabled waiver
 - [Adult AD Waiver Renewal Determination Process](Adult%20AD%20Waiver%20Renewal%20Determination%20Process.md) – Renewal procedures for Adult Aged & Disabled waiver
 - [Children's AD Waiver Initial Determination Process](Childrens%20AD%20Waiver%20Initial%20Determination%20Process.md) – Initial determination procedures for Children's Aged & Disabled waiver
 - [Children's AD Waiver Renewal Determination Process](Childrens%20AD%20Waiver%20Renewal%20Determination%20Process.md) – Renewal procedures for Children's Aged & Disabled waiver
@@ -29,33 +28,17 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ### Beneficiary Programs
 
-- [BDE Process Guide](BDE%20Process%20Guide.md) – Beneficiary Data Exchange alerts and procedures
 - [DAC Guide](DAC%20Guide.md) – Disabled Adult Child program reference
-- [SDX Guide](SDX%20Guide.md) – Supplemental Needs Trust procedures and guidance
+- [SDX Guide](SDX%20Guide.md) – State Data Exchange procedures and guidance
 
 ### Long-Term Care
 
 - [Long-Term Care (LTC) Q&A](Long-Term%20Care%20(LTC)%20Q&A.md) – Common questions about LTC eligibility and procedures
-- [LTC Insurance Payment Recovery Process](LTC%20Insurance%20Payment%20Recovery%20Process.md) – Procedures for LTC insurance payment recovery
 - [Medicare Part D Co-pay Deductions](Medicare%20Part%20D%20Co-pay%20Deductions.md) – Treatment of Medicare Part D co-payments
 
 ### Waiver Processes
 
 - [Waiver Process Guide](Waiver%20Process%20Guide.md) – General waiver application and management procedures
-- [BDE Process Guide](BDE%20Process%20Guide.md) – Managing Beneficiary Data Exchange alerts
-
-### Trust & Annuity
-
-- [Trust and Annuity Process Guide](Trust%20and%20Annuity%20Process%20Guide.md) – Procedures for trust and annuity review and treatment
-
-### Medical Documentation
-
-- [Medical Documentation Guide for Members](Medical%20Documentation%20Guide%20for%20Members.md) – Documentation requirements for applicants/recipients
-- [Medical Documentation Guide for Members (Bilingual)](Medical%20Documentation%20Guide%20for%20Members-2.21.23.ENG-SPA.md) – English/Spanish version
-- [Medical Documentation Guide for Parents and Guardians](Medical%20Documentation%20Guide%20for%20Parents%20and%20Guardians.md) – Documentation guidance for parent/guardian applicants
-- [Medical Documentation Guide for Parents and Guardians (Bilingual)](Medical%20Documentation%20Guide%20for%20Parents%20and%20Guardians-2.21.23.ENG-SPA.md) – English/Spanish version
-- [Medical Documentation Guide for Providers - Adults](Medical%20Documentation%20Guide%20for%20Providers-Adults.md) – Provider documentation requirements for adult services
-- [Medical Documentation Guide for Providers - Children](Medical%20Documentation%20Guide%20for%20Providers-Children.md) – Provider documentation requirements for child services
 
 ### Budgeting & Calculations
 
@@ -88,7 +71,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 24
+- **Total Documents:** 14 (10 documents pending professional reformatting)
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 
@@ -100,7 +83,7 @@ All documents retain their original version history and update dates from the so
 
 ### Recent Updates
 
-- **April 2025:** BDE Process Guide updated with out-of-state address procedures
+- **November 2025:** Repository cleanup - 10 documents removed for professional reformatting (Adult AD Initial, BDE, LTC Insurance Recovery, Trust & Annuity, Medical Documentation Guides)
 - **July 2024:** Additional Excess Income Guide created (new)
 - **December 2020:** AD Waiver Transition Guide established
 
