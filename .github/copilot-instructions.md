@@ -19,7 +19,11 @@ MediWiki/
 │   ├── archived/              # Converted PDFs
 │   └── pending-conversion/    # Unconverted PDFs
 ├── src/
-│   ├── main.js       # App logic & imports
+│   ├── documents.js  # Document registry & auto-discovery
+│   ├── search.js     # Fuse.js search logic
+│   ├── navigation.js # Link handling & back-to-top
+│   ├── renderer.js   # Markdown rendering
+│   ├── main.js       # App orchestrator
 │   └── style.css     # Styling
 ├── dist/
 │   └── index.html    # Built single-file app
@@ -51,21 +55,19 @@ MediWiki/
 3. **Save** as `docs/[Document Name].md`
 4. **Move** PDF from `pdfs/pending-conversion/` to `pdfs/archived/`
 5. **Update `docs/README.md`** - Add link with URL-encoded filename
-6. **Update `src/main.js`:**
+6. **Update `src/documents.js`:**
    ```javascript
-   // Add import
-   import newDoc from '../docs/New Document.md?raw';
-   
-   // Add to documentsData
-   'new-doc-id': { title: 'New Document', content: newDoc },
-   
-   // Add to filenameToDocId (both versions)
+   // Add to filenameToIdMap
    'New Document.md': 'new-doc-id',
-   'New%20Document.md': 'new-doc-id',
+   
+   // Add to idToTitleMap
+   'new-doc-id': 'New Document Title',
    ```
-7. **Update `index.html`** - Add nav link in appropriate section
+7. **Update `index.html`** - Add nav link in appropriate section with matching `data-doc="new-doc-id"`
 8. **Build:** `npm run build`
 9. **Test:** Open `dist/index.html`, verify navigation, search, and links
+
+**Note:** Documents are auto-discovered via `import.meta.glob` - no manual imports needed!
 
 ## Document Formatting
 
