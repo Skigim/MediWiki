@@ -1,0 +1,139 @@
+name: New PDF Notification
+
+on:
+  push:
+    paths:
+      - 'pdfs/pending-conversion/**/*.pdf'
+  pull_request:
+    paths:
+      - 'pdfs/pending-conversion/**/*.pdf'
+
+jobs:
+  notify-new-pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Detect new PDF files
+        id: detect
+        run: |
+          # Get list of PDF files in pending-conversion
+          NEW_PDFS=$(git diff --name-only HEAD~1 HEAD | grep 'pdfs/pending-conversion/.*\.pdf$' || true)
+          
+          if [ -z "$NEW_PDFS" ]; then
+            echo "No new PDFs found"
+            echo "has_new_pdfs=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "has_new_pdfs=true" >> $GITHUB_OUTPUT
+          echo "pdf_list<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEW_PDFS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          # Extract just the filename
+          PDF_NAME=$(basename "$NEW_PDFS" .pdf)
+          echo "pdf_name=$PDF_NAME" >> $GITHUB_OUTPUT
+      
+      - name: Create conversion task issue
+        if: steps.detect.outputs.has_new_pdfs == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pdfName = '${{ steps.detect.outputs.pdf_name }}';
+            const pdfList = `${{ steps.detect.outputs.pdf_list }}`;
+            
+            const issueBody = `## 📄 New PDF Document Detected
+            
+            A new PDF has been added to the pending conversion queue and requires manual conversion to Markdown.
+            
+            **Document:** \`${pdfName}.pdf\`
+            **Location:** \`pdfs/pending-conversion/\`
+            
+            ---
+            
+            ## Conversion Workflow
+            
+            @github-copilot Please convert this PDF to Markdown following the process below:
+            
+            ### Steps:
+            
+            1. **Extract PDF text** using pdfplumber:
+               \`\`\`python
+               import pdfplumber
+               with pdfplumber.open('pdfs/pending-conversion/${pdfName}.pdf') as pdf:
+                   text = '\\n\\n'.join(page.extract_text() for page in pdf.pages)
+               \`\`\`
+            
+            2. **Convert to Markdown** following [FORMATTING_GUIDELINES.md](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/FORMATTING_GUIDELINES.md)
+               - Title, subtitle, overview
+               - Table of Contents (6-10 items)
+               - Key Definitions (8-15 terms)
+               - Main Content (4-7 sections)
+               - Key Takeaways (6-10 items)
+               - Forms and References
+               - Footer: \`*[← Back to Index](README.md)*\`
+            
+            3. **Save** as \`docs/${pdfName}.md\`
+            
+            4. **Move PDF** from \`pdfs/pending-conversion/\` to \`pdfs/archived/\`
+            
+            5. **Update \`src/documents.js\`**:
+               - Add to \`filenameToIdMap\`
+               - Add to \`idToTitleMap\`
+            
+            6. **Update \`index.html\`**:
+               - Add navigation link with appropriate \`data-doc\` ID in the correct category
+            
+            7. **Update \`docs/README.md\`**:
+               - Add link to new document in appropriate category
+            
+            8. **Update \`.github/copilot-instructions.md\`**:
+               - Increment document count
+               - Add to completed documents list
+            
+            9. **Build and test**:
+               \`\`\`bash
+               npm run build
+               \`\`\`
+            
+            10. **Create PR** with all changes
+            
+            ---
+            
+            ## Quality Checklist
+            
+            - [ ] All original content preserved
+            - [ ] Proper heading structure (H1, H2, H3)
+            - [ ] Table of contents with working anchors
+            - [ ] Key definitions section complete
+            - [ ] Clear, professional language
+            - [ ] All regulatory citations accurate
+            - [ ] Forms and references included
+            - [ ] Back to index link works
+            - [ ] Document appears in navigation
+            - [ ] Search finds document content
+            - [ ] Build completes successfully
+            
+            ---
+            
+            **Important:** Follow [copilot-instructions.md](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/.github/copilot-instructions.md) for complete workflow details.
+            
+            _This issue was automatically created by the PDF notification workflow._`;
+            
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📄 Convert PDF: ${pdfName}`,
+              body: issueBody,
+              labels: ['documentation', 'pdf-conversion', 'github-copilot']
+            });
+            
+            console.log(`Created issue #${issue.data.number}`);
