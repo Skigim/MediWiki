@@ -22,6 +22,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 ### Income & Resources
 
 - [Additional Excess Income Guide](Additional%20Excess%20Income%20Guide.md) – Guidance for managing excess income in LTC Medically Needy budgets
+- [AVS Procedural Guide](AVS%20Procedural%20Guide.md) – Asset Verification System step-by-step instructions for account verification requests
 - [Deprivation of Resources Process Guide](Deprivation%20of%20Resources%20Process%20Guide.md) – Procedures for handling resource deprivation cases
 - [Deprivation of Resources Q&A](Deprivation%20of%20Resources%20Q&A.md) – Common questions and answers about resource deprivation
 - [Charitable Giving Guidance](Charitable%20Giving%20Guidance.md) – Policy on charitable giving and resource treatment
@@ -72,7 +73,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 19
+- **Total Documents:** 20
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 

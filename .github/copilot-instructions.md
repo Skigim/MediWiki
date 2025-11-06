@@ -5,8 +5,8 @@
 Single-file web application for Medicaid and Long-Term Care (MLTC) policy documentation. Converts PDFs to Markdown, builds into standalone HTML with fuzzy search.
 
 **Tech Stack:** Vite, Marked.js, Fuse.js, marked-gfm-heading-id  
-**Build Output:** Single 530KB HTML file  
-**Status:** 19 documents converted
+**Build Output:** Single 584KB HTML file  
+**Status:** 20 documents converted
 
 ## Project Structure
 
@@ -88,17 +88,18 @@ See `FORMATTING_GUIDELINES.md` for complete specification.
 - Preserve all original information
 - Professional tone
 
-## Completed Documents (19)
+## Completed Documents (20)
 
-AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • Self-Employment Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide
+AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • AVS Procedural Guide • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • Self-Employment Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide
 
 Check `pdfs/pending-conversion/` for unconverted documents.
 
 ## Domain Knowledge
 
-**Key Acronyms:** AD Waiver, BDE, DAC, DHHS, LTC, MLTC, MOE, SDX, SIMP
+**Key Acronyms:** AD Waiver, AVS, BDE, DAC, DHHS, LTC, MLTC, MOE, SDX, SIMP
 
 **Common Terms:**
+- **Asset Verification System (AVS):** Electronic system for verifying financial accounts and property
 - **Level of Care (LOC):** Medical necessity for waiver services
 - **Deprivation of Resources:** Asset transfer within 60-month lookback
 - **Excess Income:** Income above limits requiring spend-down
