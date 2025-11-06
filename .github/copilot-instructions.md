@@ -6,7 +6,7 @@ Single-file web application for Medicaid and Long-Term Care (MLTC) policy docume
 
 **Tech Stack:** Vite, Marked.js, Fuse.js, marked-gfm-heading-id  
 **Build Output:** Single 584KB HTML file  
-**Status:** 20 documents converted
+**Status:** 21 documents converted
 
 ## Project Structure
 
@@ -88,9 +88,9 @@ See `FORMATTING_GUIDELINES.md` for complete specification.
 - Preserve all original information
 - Professional tone
 
-## Completed Documents (20)
+## Completed Documents (21)
 
-AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • AVS Procedural Guide • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • Self-Employment Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide
+AD Waiver Transition Guide • Additional Excess Income Guide • Adult AD Waiver Initial/Renewal • AVS Procedural Guide • BDE Process Guide • Charitable Giving Guidance • Children's AD Waiver Initial/Renewal • DAC Guide • Deprivation of Resources Process/Q&A • LTC Q&A • LTC Insurance Payment Recovery • Medicare Part D Co-pay • SDX Guide • Self-Employment Guide • SIMP Budgeting Q&A • Trust and Annuity Process Guide • Waiver Process Guide • WINK-ed Retroactive Medicaid
 
 Check `pdfs/pending-conversion/` for unconverted documents.
 

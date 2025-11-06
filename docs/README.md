@@ -37,6 +37,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 - [Long-Term Care (LTC) Q&A](Long-Term%20Care%20(LTC)%20Q&A.md) – Common questions about LTC eligibility and procedures
 - [Medicare Part D Co-pay Deductions](Medicare%20Part%20D%20Co-pay%20Deductions.md) – Treatment of Medicare Part D co-payments
+- [WINK-ed Retroactive Medicaid](WINK-ed%20Retroactive%20Medicaid.md) – Processing retroactive Medicaid eligibility and verification
 
 ### Waiver Processes
 
@@ -73,7 +74,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 20
+- **Total Documents:** 21
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 

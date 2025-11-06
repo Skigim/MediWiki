@@ -27,7 +27,8 @@ const filenameToIdMap = {
   'Self-Employment Guide.md': 'self-employment',
   'SIMP Budgeting Q & A.md': 'simp-budgeting',
   'Trust and Annuity Process Guide.md': 'trust-annuity',
-  'Waiver Process Guide.md': 'waiver-process'
+  'Waiver Process Guide.md': 'waiver-process',
+  'WINK-ed Retroactive Medicaid.md': 'wink-ed-retro'
 };
 
 // Map document IDs to titles (for display)
@@ -52,7 +53,8 @@ const idToTitleMap = {
   'self-employment': 'Self-Employment Guide',
   'simp-budgeting': 'SIMP Budgeting Q&A',
   'trust-annuity': 'Trust and Annuity Process Guide',
-  'waiver-process': 'Waiver Process Guide'
+  'waiver-process': 'Waiver Process Guide',
+  'wink-ed-retro': 'WINK-ed Retroactive Medicaid'
 };
 
 // Build documents data structure
