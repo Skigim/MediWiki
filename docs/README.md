@@ -15,6 +15,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 ### Quick Reference
 
 - [Frequently Asked Questions (FAQ)](FAQ.md) – Common questions and procedures for everyday scenarios
+- [MLTC Program Standards Chart](MLTC%20Program%20Standards%20Chart.md) – Income maximums, resource limits, SSI levels, and program standards (effective 1/1/2025)
 
 ### Adult Waivers & Determinations
 
@@ -97,7 +98,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 36 (37 including this index)
+- **Total Documents:** 37 (38 including this index)
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 

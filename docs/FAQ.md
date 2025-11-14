@@ -42,7 +42,7 @@ This FAQ document provides quick answers to common questions and scenarios that 
 
 **Why?** The Federal Benefit Rate must be tracked separately for proper budget calculations. SSI typically interfaces automatically within 21 days through SDX/BDE, at which point the manual entry should be removed to avoid duplication.
 
-**Reference**: MLTC Program Standards Chart (for current FBR values)
+**Reference**: [MLTC Program Standards Chart](MLTC%20Program%20Standards%20Chart.md) (for current FBR values)
 
 ---
 
