@@ -29,6 +29,14 @@ export function initNavigation(navBarElement, backButton, toTopButton, toIndexBu
     toIndexBtn.addEventListener('click', goToIndex);
   }
   
+  // Listen for scroll to update button states
+  const mainContent = document.querySelector('.main-content');
+  if (mainContent) {
+    mainContent.addEventListener('scroll', () => {
+      updateTopButtonState();
+    });
+  }
+  
   // Hide navigation bar when hash changes to home
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '' || window.location.hash === '#home') {
@@ -38,8 +46,9 @@ export function initNavigation(navBarElement, backButton, toTopButton, toIndexBu
     }
   });
   
-  // Update back button state initially
+  // Update button states initially
   updateBackButtonState();
+  updateTopButtonState();
 }
 
 // Process internal links in rendered markdown
@@ -62,8 +71,7 @@ export function processInternalLinks(contentContainer, loadMarkdownCallback) {
           
           targetElement.scrollIntoView({ behavior: 'smooth' });
           
-          // Show navigation bar and update back button state
-          showNavBar();
+          // Update back button state
           updateBackButtonState();
         }
       });
@@ -125,13 +133,36 @@ function hideNavBar() {
   }
 }
 
+// Export function to update nav bar visibility based on current page
+export function updateNavBarVisibility(isHomePage) {
+  if (isHomePage) {
+    hideNavBar();
+  } else {
+    showNavBar();
+    updateBackButtonState();
+    updateTopButtonState();
+  }
+}
+
 // Update back button state
 function updateBackButtonState() {
   if (backBtn) {
-    if (lastAnchorPosition !== null) {
+    if (lastAnchorPosition !== null && lastAnchorPosition !== undefined) {
       backBtn.classList.remove('disabled');
     } else {
       backBtn.classList.add('disabled');
+    }
+  }
+}
+
+// Update top button state based on scroll position
+function updateTopButtonState() {
+  if (toTopBtn) {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent && mainContent.scrollTop > 100) {
+      toTopBtn.classList.remove('disabled');
+    } else {
+      toTopBtn.classList.add('disabled');
     }
   }
 }
@@ -153,6 +184,10 @@ function scrollToTop() {
   const mainContent = document.querySelector('.main-content');
   if (mainContent) {
     mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+    // Update button state after scroll
+    setTimeout(() => {
+      updateTopButtonState();
+    }, 300);
   }
 }
 

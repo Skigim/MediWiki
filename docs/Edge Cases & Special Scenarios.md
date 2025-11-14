@@ -1,13 +1,13 @@
-# Frequently Asked Questions (FAQ)
+# Edge Cases & Special Scenarios
 
-**Common Questions and Procedures**  
-*Quick reference for frequently encountered scenarios and solutions*
+**Niche Scenarios and Procedural Edge Cases**  
+*Worker reference for unusual situations and special processing requirements*
 
 ---
 
 ## Overview
 
-This FAQ document provides quick answers to common questions and scenarios that arise during Medicaid eligibility processing. Topics are organized by category for easy reference.
+This document provides guidance for edge cases and special scenarios that don't fit neatly into standard processing guides. These are unusual or niche situations that workers may encounter occasionally. Topics are organized by category for easy reference.
 
 ---
 
@@ -22,11 +22,11 @@ This FAQ document provides quick answers to common questions and scenarios that 
 
 ## Expert System
 
-### Adding SSI Income
+### SSI/FBR Entry Procedure
 
-**Q: What do I need to do after adding SSI income to Expert?**
+**Scenario:** Adding SSI income to Expert system requires special handling for the Federal Benefit Rate.
 
-**A:** After adding SSI to Expert, you must go back in and add **SSI/FBR** (Federal Benefit Rate) afterward.
+**Procedure:** After adding SSI to Expert, you must go back in and add **SSI/FBR** (Federal Benefit Rate) afterward.
 
 **Steps:**
 1. Add initial SSI income entry in Expert
@@ -48,19 +48,19 @@ This FAQ document provides quick answers to common questions and scenarios that 
 
 ## Income Processing
 
-*Additional FAQ items will be added here*
+*Additional edge cases will be added here*
 
 ---
 
 ## Resource Verification
 
-*Additional FAQ items will be added here*
+*Additional edge cases will be added here*
 
 ---
 
 ## NFOCUS Procedures
 
-*Additional FAQ items will be added here*
+*Additional edge cases will be added here*
 
 ---
 

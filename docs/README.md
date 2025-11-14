@@ -14,7 +14,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ### Quick Reference
 
-- [Frequently Asked Questions (FAQ)](FAQ.md) – Common questions and procedures for everyday scenarios
+- [Edge Cases & Special Scenarios](Edge%20Cases%20%26%20Special%20Scenarios.md) – Niche scenarios and special processing requirements
 - [MLTC Program Standards Chart](MLTC%20Program%20Standards%20Chart.md) – Income maximums, resource limits, SSI levels, and program standards (effective 1/1/2025)
 
 ### Adult Waivers & Determinations

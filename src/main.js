@@ -2,7 +2,7 @@ import './style.css';
 import './home-styles.css';
 import { renderDocument } from './renderer.js';
 import { performSearch, displaySearchResults, clearSearch } from './search.js';
-import { initNavigation, processInternalLinks } from './navigation.js';
+import { initNavigation, processInternalLinks, updateNavBarVisibility } from './navigation.js';
 
 // Get DOM elements
 const contentContainer = document.getElementById('contentContainer');
@@ -51,6 +51,8 @@ function showHomePage() {
   // Auto-collapse sidebar on homepage
   sidebar.classList.add('collapsed');
   updateFloatingToggle();
+  // Hide navigation bar on home page
+  updateNavBarVisibility(true);
 }
 
 // Show markdown, hide home page
@@ -60,6 +62,8 @@ function showMarkdown() {
   // Expand sidebar when viewing docs
   sidebar.classList.remove('collapsed');
   updateFloatingToggle();
+  // Show navigation bar when viewing docs
+  updateNavBarVisibility(false);
 }
 
 // Load and display markdown document
