@@ -7,10 +7,15 @@
 </head>
 <body>
   <!-- Sidebar Navigation -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <h1>MediWiki</h1>
-      <p>Medicaid & Long-Term Care Documentation</p>
+      <div class="sidebar-header-content">
+        <h1>MediWiki</h1>
+        <p>Medicaid & Long-Term Care Documentation</p>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">
+        <span class="toggle-icon">←</span>
+      </button>
     </div>
 
     <div class="search-box">
@@ -171,13 +176,328 @@
   <!-- Main Content Area -->
   <main class="main-content">
     <div class="content-container" id="contentContainer">
-      <!-- Content will be dynamically loaded here -->
+      <!-- Home page content -->
+      <div class="home-page" id="homePage">
+        <header class="home-header">
+          <h1>MediWiki</h1>
+          <p class="home-subtitle">Medicaid & Long-Term Care Documentation Portal</p>
+          <p class="home-description">Organized, searchable access to all medical assistance and long-term care policy documentation</p>
+        </header>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-number">37</div>
+            <div class="stat-label">Policy Guides</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Categories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Searchable</div>
+          </div>
+        </div>
+
+        <section class="home-section">
+          <h2 class="section-title">Quick Access</h2>
+          <div class="card-grid">
+            <div class="doc-card" data-doc="faq">
+              <div class="card-icon">❓</div>
+              <h3>FAQ</h3>
+              <p>Common questions and procedures for everyday scenarios</p>
+              <button class="card-btn">View Guide →</button>
+            </div>
+            <div class="doc-card" data-doc="mltc-standards">
+              <div class="card-icon">📊</div>
+              <h3>Program Standards</h3>
+              <p>Income maximums, resource limits, SSI levels (effective 1/1/2025)</p>
+              <button class="card-btn">View Chart →</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-section">
+          <h2 class="section-title">Document Categories</h2>
+          <div class="category-cards">
+            <div class="category-card" data-category="waiver">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">🏥</div>
+                  <h3>Waiver Programs</h3>
+                </div>
+                <p>AD Waiver processes, transitions, and determinations for adults and children</p>
+                <div class="doc-count">6 documents</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">🏥</div>
+                    <h3>Waiver Programs</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="ad-waiver-transition">
+                    <h4 class="category-doc-item-title">AD Waiver Transition Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="adult-ad-initial">
+                    <h4 class="category-doc-item-title">Adult AD Waiver Initial Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="adult-ad-renewal">
+                    <h4 class="category-doc-item-title">Adult AD Waiver Renewal Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="childrens-ad-initial">
+                    <h4 class="category-doc-item-title">Children's AD Waiver Initial Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="childrens-ad-renewal">
+                    <h4 class="category-doc-item-title">Children's AD Waiver Renewal Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="waiver-process">
+                    <h4 class="category-doc-item-title">Waiver Process Guide</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-card" data-category="income-resources">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">💰</div>
+                  <h3>Income & Resources</h3>
+                </div>
+                <p>AVS procedures, deprivation, trusts, charitable giving, and verification</p>
+                <div class="doc-count">11 documents</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">💰</div>
+                    <h3>Income & Resources</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="additional-excess-income">
+                    <h4 class="category-doc-item-title">Additional Excess Income Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="avs-guide">
+                    <h4 class="category-doc-item-title">AVS Procedural Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="charitable-giving">
+                    <h4 class="category-doc-item-title">Charitable Giving Guidance</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="deprivation-process">
+                    <h4 class="category-doc-item-title">Deprivation of Resources Process Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="deprivation-qa">
+                    <h4 class="category-doc-item-title">Deprivation of Resources Q&A</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="expedited-avs">
+                    <h4 class="category-doc-item-title">Expedited AVS Process Reasons</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="resource-verification">
+                    <h4 class="category-doc-item-title">Resource Verification</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="self-employment">
+                    <h4 class="category-doc-item-title">Self-Employment Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="trust-annuity">
+                    <h4 class="category-doc-item-title">Trust and Annuity Process Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="avs-consent-window">
+                    <h4 class="category-doc-item-title">AVS Consent Window</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-card" data-category="ltc">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">🏡</div>
+                  <h3>Long-Term Care</h3>
+                </div>
+                <p>LTC eligibility, retroactive Medicaid, SIMP budgeting, and TPL procedures</p>
+                <div class="doc-count">10 documents</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">🏡</div>
+                    <h3>Long-Term Care</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="c1-tpl-guide">
+                    <h4 class="category-doc-item-title">C1 TPL Quick Reference Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="living-arrangement">
+                    <h4 class="category-doc-item-title">Living Arrangement Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="ltc-qa">
+                    <h4 class="category-doc-item-title">Long-Term Care (LTC) Q&A</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="ltc-insurance">
+                    <h4 class="category-doc-item-title">LTC Insurance Payment Recovery Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="medicare-part-d">
+                    <h4 class="category-doc-item-title">Medicare Part D Co-pay Deductions</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="retro-medicaid-process">
+                    <h4 class="category-doc-item-title">Retroactive Medicaid Process</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="spousal-impoverishment">
+                    <h4 class="category-doc-item-title">Spousal Impoverishment</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="tpl-guide">
+                    <h4 class="category-doc-item-title">TPL Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="wink-ed-retro">
+                    <h4 class="category-doc-item-title">WINK-ed Retroactive Medicaid</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-card" data-category="processing">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">📋</div>
+                  <h3>Applications & Processing</h3>
+                </div>
+                <p>Continuous eligibility, consent procedures, SRT process, and valid applications</p>
+                <div class="doc-count">6 documents</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">📋</div>
+                    <h3>Applications & Processing</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="abd-hha-flow">
+                    <h4 class="category-doc-item-title">ABD or HHA Process Flow</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="continuous-eligibility">
+                    <h4 class="category-doc-item-title">Continuous Eligibility Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="consent-line">
+                    <h4 class="category-doc-item-title">MLTC Consent Line Process Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="srt-process">
+                    <h4 class="category-doc-item-title">SRT Process Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="standalone-app">
+                    <h4 class="category-doc-item-title">Standalone Application Chart</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="valid-signature">
+                    <h4 class="category-doc-item-title">Valid Application Signature</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-card" data-category="beneficiary">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">👤</div>
+                  <h3>Beneficiary Programs</h3>
+                </div>
+                <p>DAC and SDX program reference guides</p>
+                <div class="doc-count">2 documents</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">👤</div>
+                    <h3>Beneficiary Programs</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="dac-guide">
+                    <h4 class="category-doc-item-title">DAC Guide</h4>
+                  </div>
+                  <div class="category-doc-item" data-doc="sdx-guide">
+                    <h4 class="category-doc-item-title">SDX Guide</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="category-card" data-category="budgeting">
+              <div class="category-collapsed-content">
+                <div class="category-header">
+                  <div class="category-icon">🧮</div>
+                  <h3>Budgeting & Calculations</h3>
+                </div>
+                <p>SIMP budgeting questions and spousal impoverishment calculations</p>
+                <div class="doc-count">1 document</div>
+              </div>
+              <div class="category-expanded-content">
+                <div class="category-expanded-header">
+                  <button class="category-back-btn">←</button>
+                  <div class="category-expanded-title">
+                    <div class="category-icon">🧮</div>
+                    <h3>Budgeting & Calculations</h3>
+                  </div>
+                </div>
+                <div class="category-doc-list">
+                  <div class="category-doc-item" data-doc="simp-budgeting">
+                    <h4 class="category-doc-item-title">SIMP Budgeting Q & A</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-section">
+          <div class="info-card">
+            <h3>📚 How to Use MediWiki</h3>
+            <ul>
+              <li><strong>Browse:</strong> Use the sidebar to navigate by category</li>
+              <li><strong>Search:</strong> Type in the search box to find specific topics</li>
+              <li><strong>Quick Access:</strong> Click category cards to view related documents</li>
+              <li><strong>Reference:</strong> Each guide includes table of contents and definitions</li>
+            </ul>
+          </div>
+        </section>
+
+        <footer class="home-footer">
+          <p><strong>Note:</strong> These guides are reference materials based on official policy documents. Always verify current policy with your supervisor and official sources before making program decisions.</p>
+          <p class="footer-meta">Documentation Portal | Last Updated: November 2025</p>
+        </footer>
+      </div>
+      
+      <!-- Markdown content will be loaded here dynamically -->
+      <div class="markdown-content" id="markdownContent" style="display: none;"></div>
     </div>
   </main>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" title="Back to Table of Contents">
-    ↑
+  <!-- Navigation Bar -->
+  <div class="nav-bar" id="navBar">
+    <button class="nav-bar-btn" id="backBtn" title="Back to last position">
+      <span class="nav-icon">←</span>
+      <span class="nav-label">Back</span>
+    </button>
+    <button class="nav-bar-btn" id="toTopBtn" title="Back to top of page">
+      <span class="nav-icon">↑</span>
+      <span class="nav-label">Top</span>
+    </button>
+    <button class="nav-bar-btn" id="toIndexBtn" title="Go to home page">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-label">Home</span>
+    </button>
+  </div>
+
+  <!-- Floating sidebar toggle (visible when sidebar collapsed) -->
+  <button class="sidebar-toggle-floating" id="sidebarToggleFloating" title="Show sidebar">
+    <span style="font-size: 20px;">→</span>
   </button>
 
   <script type="module" src="/src/main.js"></script>

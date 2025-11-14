@@ -11,8 +11,8 @@ marked.setOptions({
 
 // Render markdown document by ID
 export function renderDocument(docId, contentContainer, processLinksCallback) {
-  if (docId === 'home') {
-    renderWelcomeScreen(contentContainer, processLinksCallback);
+  // Skip rendering if no container (home page is static HTML)
+  if (!contentContainer || docId === 'home') {
     return;
   }
 
@@ -37,21 +37,14 @@ export function renderDocument(docId, contentContainer, processLinksCallback) {
   // Use setTimeout to show loading state briefly
   setTimeout(() => {
     const html = marked.parse(doc.content);
-    contentContainer.innerHTML = `<div class="markdown-content">${html}</div>`;
-    contentContainer.scrollTop = 0;
+    contentContainer.innerHTML = html;
+    
+    // Scroll parent container to top
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTop = 0;
+    }
+    
     processLinksCallback();
   }, 100);
-}
-
-// Render welcome screen with README content
-function renderWelcomeScreen(contentContainer, processLinksCallback) {
-  // Parse the README markdown
-  const html = marked.parse(readmeContent);
-  
-  // Wrap it in a special welcome container with enhanced styling
-  contentContainer.innerHTML = `<div class="welcome-page markdown-content">${html}</div>`;
-  contentContainer.scrollTop = 0;
-  
-  // Process internal links in the README
-  processLinksCallback();
 }

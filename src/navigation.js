@@ -1,19 +1,45 @@
 import { filenameToDocId } from './documents.js';
 
-// Back to top button reference
-let backToTopBtn = null;
+// Navigation bar and button references
+let navBar = null;
+let backBtn = null;
+let toTopBtn = null;
+let toIndexBtn = null;
+let lastAnchorPosition = null;
+let loadMarkdownFunc = null;
 
 // Initialize navigation system
-export function initNavigation(backToTopButton) {
-  backToTopBtn = backToTopButton;
+export function initNavigation(navBarElement, backButton, toTopButton, toIndexButton, loadMarkdownCallback) {
+  navBar = navBarElement;
+  backBtn = backButton;
+  toTopBtn = toTopButton;
+  toIndexBtn = toIndexButton;
+  loadMarkdownFunc = loadMarkdownCallback;
   
-  // Set up back to top button click handler
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', scrollToTableOfContents);
+  // Set up button click handlers
+  if (backBtn) {
+    backBtn.addEventListener('click', goBack);
   }
   
-  // Hide button when hash changes
-  window.addEventListener('hashchange', hideBackToTop);
+  if (toTopBtn) {
+    toTopBtn.addEventListener('click', scrollToTop);
+  }
+  
+  if (toIndexBtn) {
+    toIndexBtn.addEventListener('click', goToIndex);
+  }
+  
+  // Hide navigation bar when hash changes to home
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '' || window.location.hash === '#home') {
+      hideNavBar();
+      lastAnchorPosition = null;
+      updateBackButtonState();
+    }
+  });
+  
+  // Update back button state initially
+  updateBackButtonState();
 }
 
 // Process internal links in rendered markdown
@@ -30,9 +56,15 @@ export function processInternalLinks(contentContainer, loadMarkdownCallback) {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
+          // Save current scroll position before navigating
+          const mainContent = document.querySelector('.main-content');
+          lastAnchorPosition = mainContent ? mainContent.scrollTop : 0;
+          
           targetElement.scrollIntoView({ behavior: 'smooth' });
-          // Show back to top button when user clicks an anchor link
-          showBackToTop();
+          
+          // Show navigation bar and update back button state
+          showNavBar();
+          updateBackButtonState();
         }
       });
     }
@@ -79,32 +111,78 @@ export function processInternalLinks(contentContainer, loadMarkdownCallback) {
   });
 }
 
-// Show back to top button
-function showBackToTop() {
-  if (backToTopBtn) {
-    backToTopBtn.classList.add('visible');
+// Show navigation bar
+function showNavBar() {
+  if (navBar) {
+    navBar.classList.add('visible');
   }
 }
 
-// Hide back to top button
-function hideBackToTop() {
-  if (backToTopBtn) {
-    backToTopBtn.classList.remove('visible');
+// Hide navigation bar
+function hideNavBar() {
+  if (navBar) {
+    navBar.classList.remove('visible');
   }
 }
 
-// Scroll to table of contents or top of page
-function scrollToTableOfContents() {
-  // Find the table of contents heading (usually h2 with "table-of-contents" id)
-  const toc = document.getElementById('table-of-contents');
-  if (toc) {
-    toc.scrollIntoView({ behavior: 'smooth' });
-  } else {
-    // Fallback: scroll to top of content
-    const contentContainer = document.getElementById('contentContainer');
-    if (contentContainer) {
-      contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
+// Update back button state
+function updateBackButtonState() {
+  if (backBtn) {
+    if (lastAnchorPosition !== null) {
+      backBtn.classList.remove('disabled');
+    } else {
+      backBtn.classList.add('disabled');
     }
   }
-  hideBackToTop();
+}
+
+// Go back to last anchor position
+function goBack() {
+  if (lastAnchorPosition !== null) {
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTo({ top: lastAnchorPosition, behavior: 'smooth' });
+      lastAnchorPosition = null;
+      updateBackButtonState();
+    }
+  }
+}
+
+// Scroll to top of current page
+function scrollToTop() {
+  const mainContent = document.querySelector('.main-content');
+  if (mainContent) {
+    mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// Go to index/home page
+function goToIndex() {
+  // Clear last position
+  lastAnchorPosition = null;
+  updateBackButtonState();
+  
+  // Navigate to home
+  window.location.hash = '#home';
+  
+  // Find and activate home nav link
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(l => l.classList.remove('active'));
+  const homeLink = document.querySelector('.nav-link[data-doc="home"]');
+  if (homeLink) {
+    homeLink.classList.add('active');
+  }
+  
+  // Load home content if callback exists
+  if (loadMarkdownFunc) {
+    loadMarkdownFunc('home');
+  }
+  
+  // Scroll to top of home page
+  const mainContent = document.querySelector('.main-content');
+  if (mainContent) {
+    mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  hideNavBar();
 }

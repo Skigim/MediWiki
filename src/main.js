@@ -1,4 +1,5 @@
 import './style.css';
+import './home-styles.css';
 import { renderDocument } from './renderer.js';
 import { performSearch, displaySearchResults, clearSearch } from './search.js';
 import { initNavigation, processInternalLinks } from './navigation.js';
@@ -7,16 +8,75 @@ import { initNavigation, processInternalLinks } from './navigation.js';
 const contentContainer = document.getElementById('contentContainer');
 const navLinks = document.querySelectorAll('.nav-link');
 const searchInput = document.getElementById('searchInput');
-const backToTopBtn = document.getElementById('backToTop');
+const navBar = document.getElementById('navBar');
+const backBtn = document.getElementById('backBtn');
+const toTopBtn = document.getElementById('toTopBtn');
+const toIndexBtn = document.getElementById('toIndexBtn');
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const homePage = document.getElementById('homePage');
+const markdownContent = document.getElementById('markdownContent');
+const sidebarToggleFloating = document.getElementById('sidebarToggleFloating');
 
 // Initialize navigation system
-initNavigation(backToTopBtn);
+initNavigation(navBar, backBtn, toTopBtn, toIndexBtn, loadMarkdown);
+
+// Sidebar toggle functionality
+sidebarToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('collapsed');
+  updateFloatingToggle();
+});
+
+// Floating sidebar toggle
+if (sidebarToggleFloating) {
+  sidebarToggleFloating.addEventListener('click', () => {
+    sidebar.classList.remove('collapsed');
+    updateFloatingToggle();
+  });
+}
+
+// Update floating toggle visibility
+function updateFloatingToggle() {
+  if (sidebar.classList.contains('collapsed')) {
+    sidebarToggleFloating.style.display = 'flex';
+  } else {
+    sidebarToggleFloating.style.display = 'none';
+  }
+}
+
+// Show home page, hide markdown
+function showHomePage() {
+  if (homePage) homePage.style.display = 'block';
+  if (markdownContent) markdownContent.style.display = 'none';
+  // Auto-collapse sidebar on homepage
+  sidebar.classList.add('collapsed');
+  updateFloatingToggle();
+}
+
+// Show markdown, hide home page
+function showMarkdown() {
+  if (homePage) homePage.style.display = 'none';
+  if (markdownContent) markdownContent.style.display = 'block';
+  // Expand sidebar when viewing docs
+  sidebar.classList.remove('collapsed');
+  updateFloatingToggle();
+}
 
 // Load and display markdown document
 function loadMarkdown(docId) {
-  renderDocument(docId, contentContainer, () => {
-    processInternalLinks(contentContainer, loadMarkdown);
-  });
+  if (docId === 'home') {
+    showHomePage();
+    // Scroll to top
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  } else {
+    showMarkdown();
+    renderDocument(docId, markdownContent, () => {
+      processInternalLinks(markdownContent, loadMarkdown);
+    });
+  }
 }
 
 // Set up navigation link handlers
@@ -43,6 +103,64 @@ navLinks.forEach(link => {
     }
   });
 });
+
+// Set up home page card click handlers
+function setupHomePageHandlers() {
+  // Quick access doc cards
+  document.querySelectorAll('.doc-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const docId = card.getAttribute('data-doc');
+      if (docId) {
+        const navLink = document.querySelector(`.nav-link[data-doc="${docId}"]`);
+        if (navLink) {
+          navLink.click();
+        }
+      }
+    });
+  });
+
+  // Category cards - expand to show documents
+  document.querySelectorAll('.category-card').forEach(card => {
+    // Click on card to expand
+    const collapsedContent = card.querySelector('.category-collapsed-content');
+    if (collapsedContent) {
+      collapsedContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Collapse all other cards
+        document.querySelectorAll('.category-card.expanded').forEach(other => {
+          if (other !== card) {
+            other.classList.remove('expanded');
+          }
+        });
+        // Expand this card
+        card.classList.add('expanded');
+      });
+    }
+
+    // Back button to collapse
+    const backBtn = card.querySelector('.category-back-btn');
+    if (backBtn) {
+      backBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('expanded');
+      });
+    }
+
+    // Document items navigate to document
+    card.querySelectorAll('.category-doc-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const docId = item.getAttribute('data-doc');
+        if (docId) {
+          const navLink = document.querySelector(`.nav-link[data-doc="${docId}"]`);
+          if (navLink) {
+            navLink.click();
+          }
+        }
+      });
+    });
+  });
+}
 
 // Set up search handler
 searchInput.addEventListener('input', (e) => {
@@ -82,3 +200,6 @@ if (initialLink) {
   const docId = initialLink.getAttribute('data-doc');
   loadMarkdown(docId);
 }
+
+// Setup home page handlers after DOM is ready
+setupHomePageHandlers();
