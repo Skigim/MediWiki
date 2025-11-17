@@ -207,3 +207,83 @@ if (initialLink) {
 
 // Setup home page handlers after DOM is ready
 setupHomePageHandlers();
+
+// Setup home page search
+function setupHomePageSearch() {
+  const homeSearchInput = document.getElementById('homeSearchInput');
+  const homeSearchResults = document.getElementById('homeSearchResults');
+  
+  if (!homeSearchInput || !homeSearchResults) return;
+
+  homeSearchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim();
+    
+    if (!query || query.length < 3) {
+      homeSearchResults.classList.remove('active');
+      homeSearchResults.innerHTML = '';
+      return;
+    }
+    
+    // Perform search
+    const results = performSearch(query);
+    
+    // Display results
+    if (results.length === 0) {
+      homeSearchResults.innerHTML = '<div class="home-search-no-results">No results found. Try different keywords.</div>';
+      homeSearchResults.classList.add('active');
+    } else {
+      homeSearchResults.innerHTML = '';
+      homeSearchResults.classList.add('active');
+      
+      results.forEach(result => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'home-search-result-item';
+        
+        const title = document.createElement('div');
+        title.className = 'home-search-result-title';
+        title.textContent = result.item.title;
+        
+        const snippet = document.createElement('div');
+        snippet.className = 'home-search-result-snippet';
+        const contentSnippet = result.item.content.substring(0, 150).trim() + '...';
+        snippet.textContent = contentSnippet;
+        
+        const score = document.createElement('div');
+        score.className = 'home-search-result-score';
+        const relevance = Math.round((1 - result.score) * 100);
+        score.textContent = `Relevance: ${relevance}%`;
+        
+        resultItem.appendChild(title);
+        resultItem.appendChild(snippet);
+        resultItem.appendChild(score);
+        
+        resultItem.addEventListener('click', () => {
+          // Find and trigger the corresponding nav link
+          const navLink = document.querySelector(`.nav-link[data-doc="${result.item.id}"]`);
+          if (navLink) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            navLink.classList.add('active');
+            window.location.hash = navLink.getAttribute('href');
+            loadMarkdown(result.item.id);
+            
+            // Clear search
+            homeSearchInput.value = '';
+            homeSearchResults.classList.remove('active');
+            homeSearchResults.innerHTML = '';
+          }
+        });
+        
+        homeSearchResults.appendChild(resultItem);
+      });
+    }
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!homeSearchInput.contains(e.target) && !homeSearchResults.contains(e.target)) {
+      homeSearchResults.classList.remove('active');
+    }
+  });
+}
+
+setupHomePageSearch();

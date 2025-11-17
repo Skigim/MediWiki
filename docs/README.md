@@ -10,9 +10,10 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ---
 
-## Quick Search
-
-Use the search bar in the sidebar to find content across all documents, or browse by category below.
+<div class="home-search-container">
+  <input type="text" id="homeSearchInput" placeholder="🔍 Search all documents..." class="home-search-input">
+  <div id="homeSearchResults" class="home-search-results"></div>
+</div>
 
 ---
 
