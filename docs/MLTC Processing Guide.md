@@ -122,18 +122,6 @@ The MLTC Processing Guide provides comprehensive step-by-step instructions for p
 
 ---
 
-*This is Part 1 of the MLTC Processing Guide. Continue to Part 2 for detailed process steps.*
-
----
-
-*[← Back to Index](README.md)*
-
----
-
-**Pages 6-10: MAGI Eligibility Processing**
-
----
-
 ## MAGI Eligibility Processing – New Application
 
 ### Step 1: Begin {#magi-begin}
@@ -337,15 +325,6 @@ Review application for pregnancy. See the [Continuous Eligibility Guide](Continu
 
 ---
 
-*Continue to Part 3 for Tax Household & Tax Permission and remaining MAGI processing steps.*
-
-
----
-
-**Pages 11-15: Tax Household, Living Arrangement, Income Verification**
-
----
-
 ## Continued: Family Relationships / Household Composition
 
 **Pregnancy (continued):**
@@ -527,15 +506,6 @@ b. If SEW is unable to verify income, move to the next step (Paper Verification)
 - When income passes the Tax/Hub use the same attested income / deductions to process retroactive months
 - If income does not pass the Tax/Hub for retro months proceed to the next verification source (VCI)
 - See the [Retroactive Medicaid Process](Retroactive%20Medicaid%20Process.md) for further information
-
----
-
-*Continue to Part 4 for Non-Hub Verified Income and remaining MAGI processing steps.*
-
-
----
-
-**Pages 16-20: Non-Hub Income, Retroactive Medicaid, Deductions, MEC, TPL**
 
 ---
 
@@ -723,15 +693,6 @@ Children are ineligible for CHIP if they are enrolled in other creditable health
 
 - However, if children are determined eligible for CHIP, and have current Federally Facilitated Marketplace (FFM) coverage, eligibility may be determined and coverage overlap while the individual's FFM insurance is terminated. Once approved for Medicaid, an account transfer is sent to the Marketplace to inform them of the eligibility decision
 - If the household indicates they have insurance and no further information is provided, follow-up is needed to determine the type of insurance coverage (e.g., employer-sponsored coverage or FFM coverage) and if this is still a current policy prior to processing children into CHIP
-
----
-
-*Continue to Part 5 for Process and Review Budgets and remaining MAGI processing steps.*
-
-
----
-
-**Pages 21-25: MAGI Budgets, Notices, Non-MAGI Processing Begins**
 
 ---
 
@@ -941,15 +902,6 @@ The Social Security Administration electronically transmits the data from their 
 
 ---
 
-*Continue to Part 6 for Non-MAGI Compare Application and remaining processing steps.*
-
-
----
-
-**Pages 26-30: Non-MAGI Application Processing, Verification Plan, Disability**
-
----
-
 ## Continued: Check for Valid Application
 
 **SSA LIS Application (continued):**
@@ -1155,15 +1107,6 @@ For any situation where SAVE was utilized to verify immigration status, the SAVE
 **If applicant has won a disability appeal decision:**
 - Check for Medicaid applications that have been filed back to the original disability date
 - Change the application received date to the oldest possible date
-
----
-
-*Continue to Part 7 for Retroactive Medicaid, Living Arrangement, TPL and remaining Non-MAGI processing steps.*
-
-
----
-
-**Pages 31-35: Non-MAGI Retroactive, Living Arrangement, TPL, Budget, SIMP**
 
 ---
 
@@ -1432,15 +1375,6 @@ See [Changes Reported During 90 Day Redetermination Period](Changes%20Reported%2
 
 ---
 
-*Continue to Part 8 for Disability Application and Share of Cost processing.*
-
-
----
-
-**Pages 36-40: SIMP Renewals, Disability Applications, Share of Cost Processing**
-
----
-
 ## SIMP Renewal (Continued from Part 7)
 
 ### Step 10: Notices {#simp-notices}
@@ -1669,15 +1603,6 @@ Applications must be accepted and Medicaid eligibility determined for individual
 • Narrate – include information that explains the actions taken in a way that others can follow the work completed on the case.
 
 **PROCESS COMPLETE**
-
----
-
-*Continue to Part 9 for Position Numbers, Failed to Provide, and Renewals Overview.*
-
-
----
-
-**Pages 41-42: Position Numbers, Failed to Provide, Renewals Overview**
 
 ---
 

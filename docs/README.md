@@ -42,6 +42,10 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 - [DAC Guide](DAC%20Guide.md) – Disabled Adult Child program reference
 - [SDX Guide](SDX%20Guide.md) – State Data Exchange procedures and guidance
 
+### Comprehensive Processing Guides
+
+- [MLTC Processing Guide](MLTC%20Processing%20Guide.md) – Complete step-by-step processing procedures for MAGI, Non-MAGI, Combined, SIMP, Disability applications, and Share of Cost (42 pages)
+
 ### Long-Term Care
 
 - [C1 TPL Quick Reference Guide](C1%20TPL%20Quick%20Reference%20Guide.md) – C1 system procedures for managing third-party insurance
