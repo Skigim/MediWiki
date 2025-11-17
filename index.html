@@ -241,6 +241,12 @@
           <p class="home-description">Organized, searchable access to all medical assistance and long-term care policy documentation</p>
         </header>
 
+        <!-- Home page search bar -->
+        <div class="home-search-container">
+          <input type="text" id="homeSearchInput" placeholder="🔍 Search all documents..." class="home-search-input">
+          <div id="homeSearchResults" class="home-search-results"></div>
+        </div>
+
         <div class="stats-row">
           <div class="stat-card">
             <div class="stat-number">50</div>
@@ -259,6 +265,12 @@
         <section class="home-section">
           <h2 class="section-title">Quick Access</h2>
           <div class="card-grid">
+            <div class="doc-card" data-doc="mltc-processing-guide">
+              <div class="card-icon">📘</div>
+              <h3>MLTC Processing Guide</h3>
+              <p>Comprehensive master guide: Complete step-by-step processing procedures (42 pages)</p>
+              <button class="card-btn">View Guide →</button>
+            </div>
             <div class="doc-card" data-doc="faq">
               <div class="card-icon">⚡</div>
               <h3>Edge Cases</h3>

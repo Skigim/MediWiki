@@ -10,13 +10,6 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ---
 
-<div class="home-search-container">
-  <input type="text" id="homeSearchInput" placeholder="🔍 Search all documents..." class="home-search-input">
-  <div id="homeSearchResults" class="home-search-results"></div>
-</div>
-
----
-
 ## Document Categories
 
 ### Quick Reference
