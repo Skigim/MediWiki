@@ -10,10 +10,17 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ---
 
+## Quick Search
+
+Use the search bar in the sidebar to find content across all documents, or browse by category below.
+
+---
+
 ## Document Categories
 
 ### Quick Reference
 
+- [**MLTC Processing Guide**](MLTC%20Processing%20Guide.md) – **Comprehensive master guide:** Complete step-by-step processing procedures for MAGI, Non-MAGI, Combined, SIMP, Disability applications, and Share of Cost (42 pages)
 - [Edge Cases & Special Scenarios](Edge%20Cases%20%26%20Special%20Scenarios.md) – Niche scenarios and special processing requirements
 - [MLTC Program Standards Chart](MLTC%20Program%20Standards%20Chart.md) – Income maximums, resource limits, SSI levels, and program standards (effective 1/1/2025)
 
@@ -41,10 +48,6 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 - [DAC Guide](DAC%20Guide.md) – Disabled Adult Child program reference
 - [SDX Guide](SDX%20Guide.md) – State Data Exchange procedures and guidance
-
-### Comprehensive Processing Guides
-
-- [MLTC Processing Guide](MLTC%20Processing%20Guide.md) – Complete step-by-step processing procedures for MAGI, Non-MAGI, Combined, SIMP, Disability applications, and Share of Cost (42 pages)
 
 ### Long-Term Care
 
@@ -95,9 +98,9 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ## How to Use MediWiki
 
-### Quick Search
+### Document Search
 
-Use your browser's find function (Ctrl+F) to search across document text, or browse documents by category above.
+Use the search bar in the sidebar for instant full-text search across all documents. Results highlight matching content and show you exactly where to find what you need.
 
 ### Document Structure
 
