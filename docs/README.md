@@ -65,11 +65,27 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 ### Applications & Processing
 
 - [ABD or HHA Process Flow](ABD%20or%20HHA%20Process%20Flow.md) – Decision flow for ABD vs HHA/MAGI Expansion eligibility
+- [Changes Reported During 90 Day Redetermination Period](Changes%20Reported%20During%2090%20Day%20Redetermination%20Period.md) – Process for handling changes during active case closures and renewals
+- [Child Support Referral Guide](Child%20Support%20Referral%20Guide.md) – CHARTS referral requirements and procedures for Medicaid cases
 - [Continuous Eligibility Guide](Continuous%20Eligibility%20Guide.md) – 12-month continuous eligibility for children, deemed newborns, and pregnant/postpartum individuals
+- [Duplicate Applications](Duplicate%20Applications.md) – Processing duplicate or subsequent Medicaid applications
+- [EMSA Process Guide](EMSA%20Process%20Guide.md) – Emergency Medical Services Assistance processing for SRT Eligibility Operations
+- [Former Foster Care Guide](Former%20Foster%20Care%20Guide.md) – Medicaid eligibility for youth aging out of foster care
+- [G-845 Immigration Documentation Process](G-845%20Immigration%20Documentation%20Process.md) – Electronic submission of immigration documentation via VLP interface
+- [Medicaid Position Numbers for Case Assignments](Medicaid%20Position%20Numbers%20for%20Case%20Assignments.md) – Specialized position number queues for case routing and assignment
+- [Medicaid Renewal Notice Language](Medicaid%20Renewal%20Notice%20Language.md) – Standardized renewal notice templates in English and Spanish
+- [MIWD Eligibility Process Guide](MIWD%20Eligibility%20Process%20Guide.md) – Medicaid Insurance for Workers with Disabilities eligibility and processing
+- [MLTC Citizenship and Immigration Guide](MLTC%20Citizenship%20and%20Immigration%20Guide.md) – Comprehensive guide to citizenship and immigration verification, reasonable opportunity, and status determination
 - [MLTC Consent Line Process Guide](MLTC%20Consent%20Line%20Process%20Guide.md) – Procedures for obtaining verbal consent and signatures
+- [Qualified Non-Citizen Status Eligibility Guide](Qualified%20Non-Citizen%20Status%20Eligibility%20Guide.md) – 15 qualified immigration statuses (A-O) with verification requirements
+- [Reasonable Opportunity Examples](Reasonable%20Opportunity%20Examples.md) – Practical scenarios for applying the 90-day reasonable opportunity period
+- [Reasonable Opportunity Period](Reasonable%20Opportunity%20Period.md) – Policy overview of 90-day verification period requirements and restrictions
+- [Refugee Process](Refugee%20Process.md) – Identifying and referring refugee cases for RRP/RMA eligibility screening
 - [SRT Process Guide](SRT%20Process%20Guide.md) – State Review Team disability determinations and EMSA procedures
 - [Standalone Application Chart](Standalone%20Application%20Chart.md) – Valid application types and consent requirements
+- [Unanswered Questions](Unanswered%20Questions.md) – Process for handling incomplete or unanswered application questions
 - [Valid Application Signature](Valid%20Application%20Signature.md) – Examples and requirements for valid signatures
+- [Voter Registration SOP 7.2021](Voter%20Registration%20SOP%207.2021.md) – Standard procedures for offering voter registration during application processing
 
 ---
 
@@ -98,7 +114,7 @@ Each guide includes:
 
 ## Document Statistics
 
-- **Total Documents:** 37 (38 including this index)
+- **Total Documents:** 50 (51 including this index)
 - **Last Updated:** November 2025
 - **Format:** Markdown (converted from PDF)
 
