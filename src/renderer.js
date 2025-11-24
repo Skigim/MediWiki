@@ -3,7 +3,10 @@ import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { documentsData, readmeContent } from './documents.js';
 
 // Initialize marked.js with extensions and options
-marked.use(gfmHeadingId());
+// The gfmHeadingId extension supports {#custom-id} syntax
+marked.use(gfmHeadingId({
+  prefix: '' // No prefix for IDs
+}));
 marked.setOptions({
   breaks: true,
   gfm: true
@@ -38,6 +41,21 @@ export function renderDocument(docId, contentContainer, processLinksCallback) {
   setTimeout(() => {
     const html = marked.parse(doc.content);
     contentContainer.innerHTML = html;
+    
+    // Post-process to fix custom ID anchors
+    // The {#custom-id} syntax should create proper IDs on headings
+    const headings = contentContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    headings.forEach(heading => {
+      const text = heading.textContent;
+      const match = text.match(/\{#([^}]+)\}/);
+      if (match) {
+        const customId = match[1];
+        // Set the ID on the heading
+        heading.id = customId;
+        // Remove the {#id} syntax from the visible text
+        heading.textContent = text.replace(/\s*\{#[^}]+\}/, '');
+      }
+    });
     
     // Scroll parent container to top
     const mainContent = document.querySelector('.main-content');

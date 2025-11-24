@@ -65,11 +65,16 @@ export function processInternalLinks(contentContainer, loadMarkdownCallback) {
         const targetId = href.substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-          // Save current scroll position before navigating
+          // Save current scroll position AND current hash before navigating
           const mainContent = document.querySelector('.main-content');
-          lastAnchorPosition = mainContent ? mainContent.scrollTop : 0;
+          if (mainContent) {
+            lastAnchorPosition = mainContent.scrollTop;
+          }
           
           targetElement.scrollIntoView({ behavior: 'smooth' });
+          
+          // Update URL hash without triggering navigation
+          history.replaceState(null, null, '#' + window.location.hash.split('#')[1] + '#' + targetId);
           
           // Update back button state
           updateBackButtonState();
@@ -94,6 +99,13 @@ export function processInternalLinks(contentContainer, loadMarkdownCallback) {
         // Add event listener to navigate
         link.addEventListener('click', (e) => {
           e.preventDefault();
+          
+          // Save current scroll position for back button
+          const mainContent = document.querySelector('.main-content');
+          if (mainContent) {
+            lastAnchorPosition = mainContent.scrollTop;
+            updateBackButtonState();
+          }
           
           // Find the corresponding nav link and trigger it
           const navLinks = document.querySelectorAll('.nav-link');
