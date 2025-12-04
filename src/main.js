@@ -4,6 +4,19 @@ import { renderDocument } from './renderer.js';
 import { performSearch, displaySearchResults, clearSearch } from './search.js';
 import { initNavigation, processInternalLinks, updateNavBarVisibility } from './navigation.js';
 
+// Debounce utility for search performance
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // Get DOM elements
 const contentContainer = document.getElementById('contentContainer');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -166,10 +179,8 @@ function setupHomePageHandlers() {
   });
 }
 
-// Set up search handler
-searchInput.addEventListener('input', (e) => {
-  const query = e.target.value.trim();
-  
+// Set up search handler with debounce
+const handleSidebarSearch = debounce((query) => {
   if (!query || query.length < 3) {
     clearSearch();
     return;
@@ -193,6 +204,11 @@ searchInput.addEventListener('input', (e) => {
       clearSearch();
     }
   });
+}, 150);
+
+searchInput.addEventListener('input', (e) => {
+  const query = e.target.value.trim();
+  handleSidebarSearch(query);
 });
 
 // Initialize - check for hash on load
@@ -215,9 +231,7 @@ function setupHomePageSearch() {
   
   if (!homeSearchInput || !homeSearchResults) return;
 
-  homeSearchInput.addEventListener('input', (e) => {
-    const query = e.target.value.trim();
-    
+  const handleHomeSearch = debounce((query) => {
     if (!query || query.length < 3) {
       homeSearchResults.classList.remove('active');
       homeSearchResults.innerHTML = '';
@@ -276,6 +290,11 @@ function setupHomePageSearch() {
         homeSearchResults.appendChild(resultItem);
       });
     }
+  }, 150);
+
+  homeSearchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim();
+    handleHomeSearch(query);
   });
 
   // Close results when clicking outside
