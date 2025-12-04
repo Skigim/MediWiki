@@ -8,6 +8,7 @@ const markdownModules = import.meta.glob('../docs/*.md', {
 // Map filenames to their expected document IDs (matching index.html)
 const filenameToIdMap = {
   'README.md': 'home',
+  '90 Day Redetermination Examples.md': '90day-redetermination-examples',
   'ABD or HHA Process Flow.md': 'abd-hha-flow',
   'AD Waiver Transition Guide.md': 'ad-waiver-transition',
   'Changes Reported During 90 Day Redetermination Period.md': 'changes-90day-redetermination',
@@ -42,9 +43,11 @@ const filenameToIdMap = {
   'MLTC Consent Line Process Guide.md': 'consent-line',
   'MLTC Processing Guide.md': 'mltc-processing-guide',
   'MLTC Program Standards Chart.md': 'mltc-standards',
+  'Power of Attorney Guide.md': 'poa-guide',
   'Qualified Non-Citizen Status Eligibility Guide.md': 'qualified-non-citizen',
   'Reasonable Opportunity Examples.md': 'reasonable-opportunity-examples',
   'Reasonable Opportunity Period.md': 'reasonable-opportunity-period',
+  'Real Property Training.md': 'real-property-training',
   'Refugee Process.md': 'refugee-process',
   'Resource Verification.md': 'resource-verification',
   'Retroactive Medicaid Process.md': 'retro-medicaid-process',
@@ -67,6 +70,7 @@ const filenameToIdMap = {
 // Map document IDs to titles (for display)
 const idToTitleMap = {
   'home': 'Home',
+  '90day-redetermination-examples': '90 Day Redetermination Examples',
   'abd-hha-flow': 'ABD or HHA Process Flow',
   'ad-waiver-transition': 'AD Waiver Transition Guide',
   'changes-90day-redetermination': 'Changes Reported During 90 Day Redetermination',
@@ -102,9 +106,11 @@ const idToTitleMap = {
   'renewal-notice-language': 'Medicaid Renewal Notice Language',
   'mltc-processing-guide': 'MLTC Processing Guide',
   'mltc-standards': 'MLTC Program Standards Chart',
+  'poa-guide': 'Power of Attorney Guide',
   'qualified-non-citizen': 'Qualified Non-Citizen Status Eligibility Guide',
   'reasonable-opportunity-examples': 'Reasonable Opportunity Examples',
   'reasonable-opportunity-period': 'Reasonable Opportunity Period',
+  'real-property-training': 'Real Property Training',
   'refugee-process': 'Refugee Process',
   'resource-verification': 'Resource Verification',
   'retro-medicaid-process': 'Retroactive Medicaid Process',

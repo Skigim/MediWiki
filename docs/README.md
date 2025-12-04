@@ -33,6 +33,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 - [Deprivation of Resources Q&A](Deprivation%20of%20Resources%20Q&A.md) – Common questions and answers about resource deprivation
 - [Charitable Giving Guidance](Charitable%20Giving%20Guidance.md) – Policy on charitable giving and resource treatment
 - [Expedited AVS Process Reasons](Expedited%20AVS%20Process%20Reasons.md) – Exceptions to standard AVS wait times
+- [Real Property Training](Real%20Property%20Training.md) – Ownership, verification, and eligibility for real property
 - [Resource Verification](Resource%20Verification.md) – Comprehensive resource verification requirements and procedures
 - [Self-Employment Guide](Self-Employment%20Guide.md) – MAGI and Non-MAGI self-employment income determination procedures
 - [Trust and Annuity Process Guide](Trust%20and%20Annuity%20Process%20Guide.md) – Trust and annuity evaluation procedures
@@ -65,6 +66,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 
 ### Applications & Processing
 
+- [90 Day Redetermination Examples](90%20Day%20Redetermination%20Examples.md) – Practical Q&A for processing cases within the 90-day verification period
 - [ABD or HHA Process Flow](ABD%20or%20HHA%20Process%20Flow.md) – Decision flow for ABD vs HHA/MAGI Expansion eligibility
 - [Changes Reported During 90 Day Redetermination Period](Changes%20Reported%20During%2090%20Day%20Redetermination%20Period.md) – Process for handling changes during active case closures and renewals
 - [Child Support Referral Guide](Child%20Support%20Referral%20Guide.md) – CHARTS referral requirements and procedures for Medicaid cases
@@ -78,6 +80,7 @@ MediWiki provides organized, searchable access to all medical assistance and lon
 - [MIWD Eligibility Process Guide](MIWD%20Eligibility%20Process%20Guide.md) – Medicaid Insurance for Workers with Disabilities eligibility and processing
 - [MLTC Citizenship and Immigration Guide](MLTC%20Citizenship%20and%20Immigration%20Guide.md) – Comprehensive guide to citizenship and immigration verification, reasonable opportunity, and status determination
 - [MLTC Consent Line Process Guide](MLTC%20Consent%20Line%20Process%20Guide.md) – Procedures for obtaining verbal consent and signatures
+- [Power of Attorney Guide](Power%20of%20Attorney%20Guide.md) – Financial vs Healthcare POA and AVS consent requirements
 - [Qualified Non-Citizen Status Eligibility Guide](Qualified%20Non-Citizen%20Status%20Eligibility%20Guide.md) – 15 qualified immigration statuses (A-O) with verification requirements
 - [Reasonable Opportunity Examples](Reasonable%20Opportunity%20Examples.md) – Practical scenarios for applying the 90-day reasonable opportunity period
 - [Reasonable Opportunity Period](Reasonable%20Opportunity%20Period.md) – Policy overview of 90-day verification period requirements and restrictions
